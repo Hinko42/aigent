@@ -1,24 +1,49 @@
-"""Experiment-selection strategies. Each returns one action dict per call.
+"""Experiment-selection strategies.
 
-They only see what an agent may see: the View (observations so far) and the learner built
-from those observations. They never see the environment's hidden rules.
+Strategies operate only on the View and RuleLearner.
+They never receive access to hidden environment rules.
 """
-from .environment import CONDITIONS, INTERACTIONS
+
+from .world_spec import CLASSIC_WORLD
 
 
 class View:
-    """Everything the explorer has legitimately learned about the world so far."""
+    """Everything the explorer has legitimately learned about the world."""
 
-    def __init__(self, obs):
-        self.objects = [{"shape": o["shape"], "colour": o["colour"], "material": None}
-                        for o in obs["objects"]]
-        self.cond = (obs["condition"]["temp"], obs["condition"]["light"])
-        self.tried = set()  # (object, interaction, (temp, light)) already performed
+    def __init__(self, obs, spec=CLASSIC_WORLD):
+        self.spec = spec
+
+        self.objects = []
+
+        for observed_object in obs["objects"]:
+            obj = {
+                feature: observed_object.get(feature)
+                for feature in spec.object_features
+            }
+
+            self.objects.append(obj)
+
+        self.cond = tuple(
+            obs["condition"][name]
+            for name in spec.condition_features
+        )
+
+        # (object, interaction, condition) already performed.
+        self.tried = set()
 
     def features(self, i, cond=None):
-        f = dict(self.objects[i])
-        f["temp"], f["light"] = cond or self.cond
-        return f
+        """Combine known object features with the selected condition."""
+
+        features = dict(self.objects[i])
+
+        condition = cond if cond is not None else self.cond
+
+        features.update(dict(zip(
+            self.spec.condition_features,
+            condition,
+        )))
+
+        return features
 
 
 class RandomStrategy:
@@ -26,18 +51,37 @@ class RandomStrategy:
 
     def choose(self, view, learner, rng):
         n = len(view.objects)
+        spec = view.spec
+
         r = rng.random()
+
         if r < 0.2:
-            return {"type": "inspect", "object": rng.randrange(n)}
+            return {
+                "type": "inspect",
+                "object": rng.randrange(n),
+            }
+
         if r < 0.4:
-            t, l = rng.choice(CONDITIONS)
-            return {"type": "set_condition", "temp": t, "light": l}
-        return {"type": "interact", "object": rng.randrange(n),
-                "interaction": rng.choice(INTERACTIONS)}
+            condition = rng.choice(spec.conditions)
+
+            action = {"type": "set_condition"}
+            action.update(dict(zip(
+                spec.condition_features,
+                condition,
+            )))
+
+            return action
+
+        return {
+            "type": "interact",
+            "object": rng.randrange(n),
+            "interaction": rng.choice(spec.interactions),
+        }
 
 
 class SystematicStrategy:
-    """Inspect everything, then sweep: for each condition, every interaction on every object."""
+    """Inspect everything, then systematically sweep the experiment space."""
+
     name = "systematic"
 
     def __init__(self):
@@ -47,63 +91,133 @@ class SystematicStrategy:
     def choose(self, view, learner, rng):
         if self.plan is None:
             n = len(view.objects)
-            plan = [{"type": "inspect", "object": i} for i in range(n)]
-            for t, l in CONDITIONS:
-                plan.append({"type": "set_condition", "temp": t, "light": l})
-                for inter in INTERACTIONS:
+            spec = view.spec
+
+            plan = [
+                {"type": "inspect", "object": i}
+                for i in range(n)
+            ]
+
+            for condition in spec.conditions:
+                action = {"type": "set_condition"}
+                action.update(dict(zip(
+                    spec.condition_features,
+                    condition,
+                )))
+
+                plan.append(action)
+
+                for interaction in spec.interactions:
                     for i in range(n):
-                        plan.append({"type": "interact", "object": i, "interaction": inter})
+                        plan.append({
+                            "type": "interact",
+                            "object": i,
+                            "interaction": interaction,
+                        })
+
             self.plan = plan
-        act = self.plan[self.pos % len(self.plan)]
+
+        action = self.plan[self.pos % len(self.plan)]
         self.pos += 1
-        return act
+
+        return action
 
 
 class ActiveCountStrategy:
-    """Greedy v1: run the untried experiment that puts the most still-consistent candidate rules
-    to the test, per unit cost; inspect a new object when little is left to test."""
+    """Choose experiments that test the most surviving hypotheses per cost."""
+
     name = "active_count"
 
     def __init__(self, inspect_threshold=20):
         self.inspect_threshold = inspect_threshold
 
-    def score(self, learner, inter, features):
-        return learner.testable(inter, features)
+    def score(self, learner, interaction, features):
+        return learner.testable(interaction, features)
 
     def choose(self, view, learner, rng):
         n = len(view.objects)
+        spec = view.spec
+
         best = None
+
         for i in range(n):
-            if view.objects[i]["material"] is None:
+            if any(
+                view.objects[i].get(feature) is None
+                for feature in spec.object_features
+            ):
                 continue
-            for inter in INTERACTIONS:
-                for cond in CONDITIONS:
-                    if (i, inter, cond) in view.tried:
+
+            for interaction in spec.interactions:
+                for condition in spec.conditions:
+                    if (i, interaction, condition) in view.tried:
                         continue
-                    cost = 1 if cond == view.cond else 2
-                    value = self.score(learner, inter, view.features(i, cond)) / cost
+
+                    cost = 1 if condition == view.cond else 2
+
+                    value = (
+                        self.score(
+                            learner,
+                            interaction,
+                            view.features(i, condition),
+                        )
+                        / cost
+                    )
+
                     key = (value, rng.random())
+
                     if best is None or key > best[0]:
-                        best = (key, i, inter, cond)
-        uninspected = [i for i in range(n) if view.objects[i]["material"] is None]
-        if uninspected and (best is None or best[0][0] < self.inspect_threshold):
-            return {"type": "inspect", "object": uninspected[0]}
+                        best = (key, i, interaction, condition)
+
+        uninspected = [
+            i
+            for i in range(n)
+            if any(
+                view.objects[i].get(feature) is None
+                for feature in spec.object_features
+            )
+        ]
+
+        if uninspected and (
+            best is None
+            or best[0][0] < self.inspect_threshold
+        ):
+            return {
+                "type": "inspect",
+                "object": uninspected[0],
+            }
+
         if best is None:
-            return {"type": "interact", "object": rng.randrange(n),
-                    "interaction": rng.choice(INTERACTIONS)}
-        _, i, inter, cond = best
-        if cond != view.cond:
-            return {"type": "set_condition", "temp": cond[0], "light": cond[1]}
-        return {"type": "interact", "object": i, "interaction": inter}
+            return {
+                "type": "interact",
+                "object": rng.randrange(n),
+                "interaction": rng.choice(spec.interactions),
+            }
+
+        _, i, interaction, condition = best
+
+        if condition != view.cond:
+            action = {"type": "set_condition"}
+            action.update(dict(zip(
+                spec.condition_features,
+                condition,
+            )))
+
+            return action
+
+        return {
+            "type": "interact",
+            "object": i,
+            "interaction": interaction,
+        }
 
 
 class ActiveStrategy(ActiveCountStrategy):
-    """Greedy v2: highest expected information gain (entropy of the outcome over the
-    still-consistent candidate rules), per unit cost."""
+    """Choose experiments by expected information gain per cost."""
+
     name = "active"
 
     def __init__(self, inspect_threshold=0.5):
         self.inspect_threshold = inspect_threshold
 
-    def score(self, learner, inter, features):
-        return learner.info_gain(inter, features)
+    def score(self, learner, interaction, features):
+        return learner.info_gain(interaction, features)
