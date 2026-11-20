@@ -1,0 +1,1 @@
+{"cond": "detached", "seed": 1, "bpc": 2.3536, "corr_entropy": 0.5396, "auroc_entropy": 0.8105, "auroc_maxprob": 0.8194, "corr_head": 0.4708, "auroc_head": 0.7752}

@@ -1,0 +1,1 @@
+{"cond": "attached", "seed": 0, "bpc": 2.3759, "corr_entropy": 0.5358, "auroc_entropy": 0.8103, "auroc_maxprob": 0.8184, "corr_head": 0.4825, "auroc_head": 0.7827}
