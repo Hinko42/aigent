@@ -34,12 +34,25 @@ def run_episode(strategy_cls, seed, budget=60, n_rules=3, n_objects=8, checkpoin
         res = env.step(act)
         steps += 1
         if act["type"] == "inspect":
-            view.objects[act["object"]]["material"] = res["material"]
+            object_id = act["object"]
+
+            view.objects[object_id]["material"] = res["material"]
+
+            learner.update_object_features(
+            object_id,
+            view.objects[object_id]
+    )
+        
         elif act["type"] == "set_condition":
             view.cond = (act["temp"], act["light"])
         else:
             i, inter = act["object"], act["interaction"]
-            learner.update(inter, view.features(i), res["outcome"])
+            learner.update(
+                inter,
+                view.features(i),
+                res["outcome"],
+                object_id=i
+            )
             performed.add((i, inter) + view.cond)
             view.tried.add((i, inter, view.cond))
         if steps in checkpoints:

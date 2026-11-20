@@ -142,6 +142,59 @@ class TestLearner(unittest.TestCase):
         self.assertEqual(learner.predict("heat", wood), "melts")
         self.assertEqual(learner.predict("heat", metal), NOTHING)
 
+    def test_late_inspection_revises_old_observations(self):
+        learner = RuleLearner()
+
+        unknown = {
+            "shape": "cube",
+            "colour": "red",
+            "material": None,
+            "temp": "hot",
+            "light": "dim",
+        }
+
+        wood_rule = (
+            "heat",
+            (("material", "wood"),),
+            "melts"
+        )
+
+        metal_rule = (
+            "heat",
+            (("material", "metal"),),
+            "melts"
+        )
+
+        wood_idx = CANDIDATES.index(wood_rule)
+        metal_idx = CANDIDATES.index(metal_rule)
+
+        # Record an observation without knowing the material.
+        learner.update(
+            "heat",
+            unknown,
+            NOTHING,
+            object_id=0
+        )
+
+        # Both hypotheses remain possible while material is unknown.
+        self.assertTrue(learner.alive[wood_idx])
+        self.assertTrue(learner.alive[metal_idx])
+
+        # Later, discover that the object is made of wood.
+        learner.update_object_features(
+            0,
+            {"material": "wood"}
+        )
+
+        # The old observation must now be reconsidered.
+        self.assertFalse(learner.alive[wood_idx])
+
+        # The metal hypothesis remains possible.
+        self.assertTrue(learner.alive[metal_idx])
+
+        # Historical observation was retained.
+        self.assertEqual(learner.n_obs, 1)
+
 
 class TestStrategies(unittest.TestCase):
     def test_strategies_only_emit_valid_actions_within_budget(self):
