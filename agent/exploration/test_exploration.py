@@ -38,20 +38,20 @@ class TestEnvironment(unittest.TestCase):
         self.assertEqual(a.truth().rules, b.truth().rules)
         self.assertEqual(a.truth().objects, b.truth().objects)
 
-        def test_five_rule_generation_is_reliable(self):
-            """Every benchmark environment must contain all requested hidden rules."""
-            for seed in range(100, 130):
-                env = Env(
-                    seed,
-                    n_objects=12,
-                    n_rules=5,
-                    budget=100
-                )
+    def test_five_rule_generation_is_reliable(self):
+        """Every benchmark environment must contain all requested hidden rules."""
+        for seed in range(100, 130):
+            env = Env(
+                seed,
+                n_objects=12,
+                n_rules=5,
+                budget=100
+            )
 
-                self.assertEqual(
-                    len(env.truth().rules),
-                    5,
-                    f"Seed {seed} generated fewer than five rules"
+            self.assertEqual(
+                len(env.truth().rules),
+                5,
+                f"Seed {seed} generated fewer than five rules"
             )
 
     def test_different_seeds_differ(self):
