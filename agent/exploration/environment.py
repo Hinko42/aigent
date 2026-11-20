@@ -112,6 +112,12 @@ def _generate_rules(rng, objects, n_rules):
         if any(r[0] == inter and not conj_conflict(r[1], conj) for r in rules):
             continue  # rules of one interaction must not overlap
         rules.append((inter, conj, outcome))
+
+    if len(rules) != n_rules:
+        raise RuntimeError(
+            f"Could only generate {len(rules)} of {n_rules} requested rules."
+        )
+
     return rules
 
 
