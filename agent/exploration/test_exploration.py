@@ -48,10 +48,10 @@ class TestEnvironment(unittest.TestCase):
                     budget=100
                 )
 
-            self.assertEqual(
-                len(env.truth().rules),
-                5,
-                f"Seed {seed} generated fewer than five rules"
+                self.assertEqual(
+                    len(env.truth().rules),
+                    5,
+                    f"Seed {seed} generated fewer than five rules"
             )
 
     def test_different_seeds_differ(self):
