@@ -70,3 +70,25 @@ STRANGE_WORLD = WorldSpec(
 
     max_rule_arity=2,
 )
+
+
+THIRD_WORLD = WorldSpec(
+    name="third",
+
+    features={
+        "lattice": ("woven", "layered", "porous"),
+        "substrate": ("ceramic", "polymer", "alloy"),
+        "provenance": ("abyssal", "terrestrial", "extrusive"),
+        "pressure": ("low", "balanced", "extreme"),
+        "moisture": ("arid", "saturated"),
+    },
+
+    object_features=("lattice", "substrate", "provenance"),
+    observable_features=("lattice", "provenance"),
+    condition_features=("pressure", "moisture"),
+
+    interactions=("compress", "vibrate", "irradiate"),
+    effects=("fractures", "swells", "conducts", "crystallizes"),
+
+    max_rule_arity=3,
+)

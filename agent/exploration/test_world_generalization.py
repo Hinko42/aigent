@@ -2,7 +2,11 @@
 
 import unittest
 
-from .world_spec import CLASSIC_WORLD, STRANGE_WORLD
+from .world_spec import (
+    CLASSIC_WORLD,
+    STRANGE_WORLD,
+    THIRD_WORLD,
+)
 from .environment import Env
 from .learner import RuleLearner
 from .strategies import (
@@ -37,7 +41,7 @@ class OracleLearner:
 class TestWorldGeneralization(unittest.TestCase):
 
     def test_both_worlds_generate_requested_rules(self):
-        for spec in (CLASSIC_WORLD, STRANGE_WORLD):
+        for spec in (CLASSIC_WORLD, STRANGE_WORLD, THIRD_WORLD):
             for seed in range(100, 130):
                 env = Env(
                     seed,
@@ -190,7 +194,7 @@ class TestWorldGeneralization(unittest.TestCase):
                 )
 
     def test_oracle_evaluation_works_in_both_worlds(self):
-        for spec in (CLASSIC_WORLD, STRANGE_WORLD):
+        for spec in (CLASSIC_WORLD, STRANGE_WORLD, THIRD_WORLD):
             truth = Env(
                 42,
                 spec=spec,
@@ -221,7 +225,63 @@ class TestWorldGeneralization(unittest.TestCase):
                 result["n_spurious"],
                 0,
             )
+    
+    def test_third_world_uses_three_feature_rules(self):
+        env = Env(
+            42,
+            n_objects=12,
+            n_rules=5,
+            spec=THIRD_WORLD,
+        )
 
+        truth = env.truth()
+
+        for obj in truth.objects:
+            self.assertEqual(
+                set(obj.keys()),
+                set(THIRD_WORLD.object_features),
+            )
+
+        for rule in truth.rules:
+            self.assertLessEqual(len(rule[1]), 3)
+
+            for feature, value in rule[1]:
+                self.assertIn(feature, THIRD_WORLD.features)
+                self.assertIn(
+                    value,
+                    THIRD_WORLD.features[feature],
+                )
+
+        learner = RuleLearner(THIRD_WORLD)
+
+        self.assertTrue(
+            any(
+                len(conjunction) == 3
+                for _, conjunction, _ in learner.candidates
+            )
+        )
+
+    def test_all_strategies_complete_third_world_episodes(self):
+        for strategy in STRATEGIES:
+            for seed in range(5):
+                result = run_episode(
+                    strategy,
+                    seed,
+                    budget=60,
+                    n_rules=3,
+                    n_objects=8,
+                    spec=THIRD_WORLD,
+                )
+
+                self.assertIn(
+                    "rules_recovered",
+                    result["final"],
+                )
+
+                self.assertIn(
+                    "space_accuracy",
+                    result["final"],
+                )
 
 if __name__ == "__main__":
     unittest.main()

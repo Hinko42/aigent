@@ -15,7 +15,11 @@ from .strategies import (
     SystematicStrategy,
     View,
 )
-from .world_spec import CLASSIC_WORLD, STRANGE_WORLD
+from .world_spec import (
+    CLASSIC_WORLD,
+    STRANGE_WORLD,
+    THIRD_WORLD,
+)
 
 
 STRATEGIES = (
@@ -38,6 +42,7 @@ METRICS = (
 WORLDS = {
     "classic": CLASSIC_WORLD,
     "strange": STRANGE_WORLD,
+    "third": THIRD_WORLD,
 }
 
 
