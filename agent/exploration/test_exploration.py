@@ -54,6 +54,86 @@ class TestEnvironment(unittest.TestCase):
                 f"Seed {seed} generated fewer than five rules"
             )
 
+    def test_rule_change_preserves_objects(self):
+        env = Env(42)
+
+        original_objects = [
+            dict(obj) for obj in env.truth().objects
+        ]
+
+        original_rules = list(env.truth().rules)
+
+        changed = env.change_rules(
+            seed=123,
+            n_changed=1,
+        )
+
+        self.assertEqual(len(changed), 1)
+
+        self.assertEqual(
+            env.truth().objects,
+            original_objects,
+        )
+
+        for i, (old, new) in enumerate(
+            zip(original_rules, env.truth().rules)
+        ):
+            if i not in changed:
+                self.assertEqual(old, new)
+            else:
+                self.assertNotEqual(old, new)
+
+    def test_multiple_rule_changes_preserve_validity(self):
+        env = Env(42)
+
+        changed = env.change_rules(
+            seed=123,
+            n_changed=2,
+        )
+
+        self.assertEqual(len(changed), 2)
+
+        rules = env.truth().rules
+
+        self.assertEqual(len(rules), 3)
+
+        for i, first in enumerate(rules):
+            for second in rules[i + 1:]:
+                if first[0] == second[0]:
+                    self.assertTrue(
+                        conj_conflict(first[1], second[1])
+                    )
+
+        for rule in rules:
+            self.assertTrue(
+                any(
+                    q["rule"] == rule
+                    for q in env.truth().queries()
+                )
+            )
+
+    def test_rule_change_is_reproducible(self):
+        a = Env(42)
+        b = Env(42)
+
+        changed_a = a.change_rules(123, 2)
+        changed_b = b.change_rules(123, 2)
+
+        self.assertEqual(changed_a, changed_b)
+        self.assertEqual(
+            a.truth().rules,
+            b.truth().rules,
+        )
+
+    def test_invalid_rule_change_rejected(self):
+        env = Env(42)
+
+        with self.assertRaises(ValueError):
+            env.change_rules(123, 0)
+
+        with self.assertRaises(ValueError):
+            env.change_rules(123, 4)
+
     def test_different_seeds_differ(self):
         worlds = {tuple(Env(s).truth().rules) for s in range(20)}
         self.assertGreater(len(worlds), 10)

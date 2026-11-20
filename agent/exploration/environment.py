@@ -232,6 +232,87 @@ class Env:
         """Evaluator only. Never provide this to the explorer."""
         return self._truth
 
+    def change_rules(self, seed, n_changed=1):
+        """
+        Replace exactly n_changed hidden rules.
+
+        Objects and their features remain unchanged.
+        The replacement rules remain reachable and non-overlapping.
+        Returns the indices of the replaced rules.
+        """
+        old_rules = list(self._truth.rules)
+
+        if not isinstance(n_changed, int) or not 1 <= n_changed <= len(old_rules):
+            raise ValueError("n_changed must be between 1 and the number of rules")
+
+        rng = random.Random(seed)
+        changed_indices = sorted(
+            rng.sample(range(len(old_rules)), n_changed)
+        )
+
+        unchanged = {
+            i: rule
+            for i, rule in enumerate(old_rules)
+            if i not in changed_indices
+        }
+
+        for _ in range(1000):
+            generated = _generate_rules(
+                rng,
+                self._truth.objects,
+                len(old_rules),
+                self.spec,
+            )
+
+            new_rules = list(old_rules)
+            valid = True
+
+            for index, replacement in zip(changed_indices, generated):
+                if replacement == old_rules[index]:
+                    valid = False
+                    break
+
+                for other_index, other_rule in unchanged.items():
+                    if (
+                        replacement[0] == other_rule[0]
+                        and not conj_conflict(
+                            replacement[1],
+                            other_rule[1],
+                        )
+                    ):
+                        valid = False
+                        break
+
+                if not valid:
+                    break
+
+                for previous_index in changed_indices:
+                    if previous_index >= index:
+                        break
+
+                    previous = new_rules[previous_index]
+
+                    if (
+                        replacement[0] == previous[0]
+                        and not conj_conflict(
+                            replacement[1],
+                            previous[1],
+                        )
+                    ):
+                        valid = False
+                        break
+
+                if not valid:
+                    break
+
+                new_rules[index] = replacement
+
+            if valid:
+                self._truth.rules = new_rules
+                return changed_indices
+
+        raise RuntimeError("Could not generate compatible replacement rules")
+
     def observe(self):
         """Return only publicly observable information."""
         objects = []

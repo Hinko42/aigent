@@ -1,0 +1,849 @@
+{
+  "config": {
+    "seeds": 30,
+    "budget": 60,
+    "changed": 1
+  },
+  "results": [
+    {
+      "seed": 0,
+      "changed_indices": [
+        0
+      ],
+      "phase_a_observations": 50,
+      "phase_b_observations": 50,
+      "stateless": {
+        "space_accuracy": 0.875,
+        "space_nontrivial_accuracy": 0.6666666666666666,
+        "space_false_alarm": 0.09523809523809523,
+        "rules_recovered": 0.6666666666666666,
+        "exact_recall": 0.0,
+        "n_spurious": 2,
+        "unseen_accuracy": 0.921875,
+        "n_unseen": 128
+      },
+      "persistent": {
+        "space_accuracy": 0.875,
+        "space_nontrivial_accuracy": 0.3333333333333333,
+        "space_false_alarm": 0.047619047619047616,
+        "rules_recovered": 0.3333333333333333,
+        "exact_recall": 0.0,
+        "n_spurious": 1,
+        "unseen_accuracy": 0.921875,
+        "n_unseen": 128
+      }
+    },
+    {
+      "seed": 1,
+      "changed_indices": [
+        1
+      ],
+      "phase_a_observations": 50,
+      "phase_b_observations": 50,
+      "stateless": {
+        "space_accuracy": 0.9583333333333334,
+        "space_nontrivial_accuracy": 0.75,
+        "space_false_alarm": 0.0,
+        "rules_recovered": 0.6666666666666666,
+        "exact_recall": 0.6666666666666666,
+        "n_spurious": 0,
+        "unseen_accuracy": 0.96875,
+        "n_unseen": 128
+      },
+      "persistent": {
+        "space_accuracy": 0.9583333333333334,
+        "space_nontrivial_accuracy": 0.75,
+        "space_false_alarm": 0.0,
+        "rules_recovered": 0.6666666666666666,
+        "exact_recall": 0.6666666666666666,
+        "n_spurious": 0,
+        "unseen_accuracy": 0.96875,
+        "n_unseen": 128
+      }
+    },
+    {
+      "seed": 2,
+      "changed_indices": [
+        1
+      ],
+      "phase_a_observations": 50,
+      "phase_b_observations": 50,
+      "stateless": {
+        "space_accuracy": 0.9166666666666666,
+        "space_nontrivial_accuracy": 0.75,
+        "space_false_alarm": 0.05,
+        "rules_recovered": 0.6666666666666666,
+        "exact_recall": 0.3333333333333333,
+        "n_spurious": 1,
+        "unseen_accuracy": 0.90625,
+        "n_unseen": 128
+      },
+      "persistent": {
+        "space_accuracy": 0.9166666666666666,
+        "space_nontrivial_accuracy": 0.5,
+        "space_false_alarm": 0.0,
+        "rules_recovered": 0.3333333333333333,
+        "exact_recall": 0.3333333333333333,
+        "n_spurious": 0,
+        "unseen_accuracy": 0.90625,
+        "n_unseen": 128
+      }
+    },
+    {
+      "seed": 3,
+      "changed_indices": [
+        1
+      ],
+      "phase_a_observations": 50,
+      "phase_b_observations": 50,
+      "stateless": {
+        "space_accuracy": 0.8958333333333334,
+        "space_nontrivial_accuracy": 0.6666666666666666,
+        "space_false_alarm": 0.05128205128205128,
+        "rules_recovered": 0.6666666666666666,
+        "exact_recall": 0.3333333333333333,
+        "n_spurious": 1,
+        "unseen_accuracy": 0.890625,
+        "n_unseen": 128
+      },
+      "persistent": {
+        "space_accuracy": 0.8958333333333334,
+        "space_nontrivial_accuracy": 0.4444444444444444,
+        "space_false_alarm": 0.0,
+        "rules_recovered": 0.3333333333333333,
+        "exact_recall": 0.3333333333333333,
+        "n_spurious": 0,
+        "unseen_accuracy": 0.890625,
+        "n_unseen": 128
+      }
+    },
+    {
+      "seed": 4,
+      "changed_indices": [
+        0
+      ],
+      "phase_a_observations": 50,
+      "phase_b_observations": 50,
+      "stateless": {
+        "space_accuracy": 0.9166666666666666,
+        "space_nontrivial_accuracy": 0.75,
+        "space_false_alarm": 0.05,
+        "rules_recovered": 0.6666666666666666,
+        "exact_recall": 0.3333333333333333,
+        "n_spurious": 1,
+        "unseen_accuracy": 0.875,
+        "n_unseen": 128
+      },
+      "persistent": {
+        "space_accuracy": 0.8333333333333334,
+        "space_nontrivial_accuracy": 0.25,
+        "space_false_alarm": 0.05,
+        "rules_recovered": 0.3333333333333333,
+        "exact_recall": 0.0,
+        "n_spurious": 1,
+        "unseen_accuracy": 0.84375,
+        "n_unseen": 128
+      }
+    },
+    {
+      "seed": 5,
+      "changed_indices": [
+        2
+      ],
+      "phase_a_observations": 50,
+      "phase_b_observations": 50,
+      "stateless": {
+        "space_accuracy": 1.0,
+        "space_nontrivial_accuracy": 1.0,
+        "space_false_alarm": 0.0,
+        "rules_recovered": 1.0,
+        "exact_recall": 1.0,
+        "n_spurious": 0,
+        "unseen_accuracy": 1.0,
+        "n_unseen": 128
+      },
+      "persistent": {
+        "space_accuracy": 0.875,
+        "space_nontrivial_accuracy": 0.5,
+        "space_false_alarm": 0.0,
+        "rules_recovered": 0.6666666666666666,
+        "exact_recall": 0.6666666666666666,
+        "n_spurious": 0,
+        "unseen_accuracy": 0.875,
+        "n_unseen": 128
+      }
+    },
+    {
+      "seed": 6,
+      "changed_indices": [
+        2
+      ],
+      "phase_a_observations": 50,
+      "phase_b_observations": 50,
+      "stateless": {
+        "space_accuracy": 0.8194444444444444,
+        "space_nontrivial_accuracy": 0.35714285714285715,
+        "space_false_alarm": 0.06896551724137931,
+        "rules_recovered": 0.6666666666666666,
+        "exact_recall": 0.0,
+        "n_spurious": 2,
+        "unseen_accuracy": 0.875,
+        "n_unseen": 128
+      },
+      "persistent": {
+        "space_accuracy": 0.8472222222222222,
+        "space_nontrivial_accuracy": 0.21428571428571427,
+        "space_false_alarm": 0.0,
+        "rules_recovered": 0.3333333333333333,
+        "exact_recall": 0.0,
+        "n_spurious": 1,
+        "unseen_accuracy": 0.8125,
+        "n_unseen": 128
+      }
+    },
+    {
+      "seed": 7,
+      "changed_indices": [
+        0
+      ],
+      "phase_a_observations": 50,
+      "phase_b_observations": 50,
+      "stateless": {
+        "space_accuracy": 1.0,
+        "space_nontrivial_accuracy": 1.0,
+        "space_false_alarm": 0.0,
+        "rules_recovered": 1.0,
+        "exact_recall": 1.0,
+        "n_spurious": 0,
+        "unseen_accuracy": 1.0,
+        "n_unseen": 128
+      },
+      "persistent": {
+        "space_accuracy": 0.9166666666666666,
+        "space_nontrivial_accuracy": 0.7142857142857143,
+        "space_false_alarm": 0.0,
+        "rules_recovered": 0.6666666666666666,
+        "exact_recall": 0.6666666666666666,
+        "n_spurious": 0,
+        "unseen_accuracy": 0.90625,
+        "n_unseen": 128
+      }
+    },
+    {
+      "seed": 8,
+      "changed_indices": [
+        2
+      ],
+      "phase_a_observations": 50,
+      "phase_b_observations": 50,
+      "stateless": {
+        "space_accuracy": 0.9166666666666666,
+        "space_nontrivial_accuracy": 0.75,
+        "space_false_alarm": 0.05,
+        "rules_recovered": 0.6666666666666666,
+        "exact_recall": 0.3333333333333333,
+        "n_spurious": 1,
+        "unseen_accuracy": 0.875,
+        "n_unseen": 128
+      },
+      "persistent": {
+        "space_accuracy": 0.8333333333333334,
+        "space_nontrivial_accuracy": 0.25,
+        "space_false_alarm": 0.05,
+        "rules_recovered": 0.3333333333333333,
+        "exact_recall": 0.0,
+        "n_spurious": 1,
+        "unseen_accuracy": 0.75,
+        "n_unseen": 128
+      }
+    },
+    {
+      "seed": 9,
+      "changed_indices": [
+        2
+      ],
+      "phase_a_observations": 50,
+      "phase_b_observations": 50,
+      "stateless": {
+        "space_accuracy": 0.875,
+        "space_nontrivial_accuracy": 0.625,
+        "space_false_alarm": 0.0,
+        "rules_recovered": 0.6666666666666666,
+        "exact_recall": 0.6666666666666666,
+        "n_spurious": 0,
+        "unseen_accuracy": 0.875,
+        "n_unseen": 128
+      },
+      "persistent": {
+        "space_accuracy": 0.875,
+        "space_nontrivial_accuracy": 0.625,
+        "space_false_alarm": 0.0,
+        "rules_recovered": 0.6666666666666666,
+        "exact_recall": 0.6666666666666666,
+        "n_spurious": 0,
+        "unseen_accuracy": 0.875,
+        "n_unseen": 128
+      }
+    },
+    {
+      "seed": 10,
+      "changed_indices": [
+        2
+      ],
+      "phase_a_observations": 50,
+      "phase_b_observations": 50,
+      "stateless": {
+        "space_accuracy": 0.8333333333333334,
+        "space_nontrivial_accuracy": 0.42857142857142855,
+        "space_false_alarm": 0.0,
+        "rules_recovered": 0.0,
+        "exact_recall": 0.0,
+        "n_spurious": 1,
+        "unseen_accuracy": 0.828125,
+        "n_unseen": 128
+      },
+      "persistent": {
+        "space_accuracy": 0.8333333333333334,
+        "space_nontrivial_accuracy": 0.42857142857142855,
+        "space_false_alarm": 0.0,
+        "rules_recovered": 0.0,
+        "exact_recall": 0.0,
+        "n_spurious": 1,
+        "unseen_accuracy": 0.828125,
+        "n_unseen": 128
+      }
+    },
+    {
+      "seed": 11,
+      "changed_indices": [
+        1
+      ],
+      "phase_a_observations": 50,
+      "phase_b_observations": 50,
+      "stateless": {
+        "space_accuracy": 0.7916666666666666,
+        "space_nontrivial_accuracy": 0.45454545454545453,
+        "space_false_alarm": 0.10810810810810811,
+        "rules_recovered": 0.3333333333333333,
+        "exact_recall": 0.0,
+        "n_spurious": 2,
+        "unseen_accuracy": 0.78125,
+        "n_unseen": 128
+      },
+      "persistent": {
+        "space_accuracy": 0.7916666666666666,
+        "space_nontrivial_accuracy": 0.45454545454545453,
+        "space_false_alarm": 0.10810810810810811,
+        "rules_recovered": 0.3333333333333333,
+        "exact_recall": 0.0,
+        "n_spurious": 2,
+        "unseen_accuracy": 0.78125,
+        "n_unseen": 128
+      }
+    },
+    {
+      "seed": 12,
+      "changed_indices": [
+        0
+      ],
+      "phase_a_observations": 50,
+      "phase_b_observations": 50,
+      "stateless": {
+        "space_accuracy": 0.9166666666666666,
+        "space_nontrivial_accuracy": 0.75,
+        "space_false_alarm": 0.05,
+        "rules_recovered": 0.6666666666666666,
+        "exact_recall": 0.3333333333333333,
+        "n_spurious": 1,
+        "unseen_accuracy": 0.90625,
+        "n_unseen": 128
+      },
+      "persistent": {
+        "space_accuracy": 0.8333333333333334,
+        "space_nontrivial_accuracy": 0.25,
+        "space_false_alarm": 0.05,
+        "rules_recovered": 0.3333333333333333,
+        "exact_recall": 0.0,
+        "n_spurious": 1,
+        "unseen_accuracy": 0.84375,
+        "n_unseen": 128
+      }
+    },
+    {
+      "seed": 13,
+      "changed_indices": [
+        0
+      ],
+      "phase_a_observations": 50,
+      "phase_b_observations": 50,
+      "stateless": {
+        "space_accuracy": 0.9166666666666666,
+        "space_nontrivial_accuracy": 0.75,
+        "space_false_alarm": 0.05,
+        "rules_recovered": 0.6666666666666666,
+        "exact_recall": 0.3333333333333333,
+        "n_spurious": 1,
+        "unseen_accuracy": 0.9375,
+        "n_unseen": 128
+      },
+      "persistent": {
+        "space_accuracy": 0.8333333333333334,
+        "space_nontrivial_accuracy": 0.25,
+        "space_false_alarm": 0.05,
+        "rules_recovered": 0.3333333333333333,
+        "exact_recall": 0.0,
+        "n_spurious": 1,
+        "unseen_accuracy": 0.78125,
+        "n_unseen": 128
+      }
+    },
+    {
+      "seed": 14,
+      "changed_indices": [
+        0
+      ],
+      "phase_a_observations": 50,
+      "phase_b_observations": 50,
+      "stateless": {
+        "space_accuracy": 0.9375,
+        "space_nontrivial_accuracy": 1.0,
+        "space_false_alarm": 0.08571428571428572,
+        "rules_recovered": 1.0,
+        "exact_recall": 0.6666666666666666,
+        "n_spurious": 1,
+        "unseen_accuracy": 0.9375,
+        "n_unseen": 128
+      },
+      "persistent": {
+        "space_accuracy": 0.8125,
+        "space_nontrivial_accuracy": 0.5384615384615384,
+        "space_false_alarm": 0.08571428571428572,
+        "rules_recovered": 0.6666666666666666,
+        "exact_recall": 0.3333333333333333,
+        "n_spurious": 1,
+        "unseen_accuracy": 0.8125,
+        "n_unseen": 128
+      }
+    },
+    {
+      "seed": 15,
+      "changed_indices": [
+        1
+      ],
+      "phase_a_observations": 50,
+      "phase_b_observations": 50,
+      "stateless": {
+        "space_accuracy": 0.75,
+        "space_nontrivial_accuracy": 0.3333333333333333,
+        "space_false_alarm": 0.0,
+        "rules_recovered": 0.0,
+        "exact_recall": 0.0,
+        "n_spurious": 1,
+        "unseen_accuracy": 0.75,
+        "n_unseen": 128
+      },
+      "persistent": {
+        "space_accuracy": 0.75,
+        "space_nontrivial_accuracy": 0.3333333333333333,
+        "space_false_alarm": 0.0,
+        "rules_recovered": 0.3333333333333333,
+        "exact_recall": 0.3333333333333333,
+        "n_spurious": 0,
+        "unseen_accuracy": 0.75,
+        "n_unseen": 128
+      }
+    },
+    {
+      "seed": 16,
+      "changed_indices": [
+        2
+      ],
+      "phase_a_observations": 50,
+      "phase_b_observations": 50,
+      "stateless": {
+        "space_accuracy": 0.75,
+        "space_nontrivial_accuracy": 0.3333333333333333,
+        "space_false_alarm": 0.0,
+        "rules_recovered": 0.3333333333333333,
+        "exact_recall": 0.3333333333333333,
+        "n_spurious": 0,
+        "unseen_accuracy": 0.75,
+        "n_unseen": 128
+      },
+      "persistent": {
+        "space_accuracy": 0.75,
+        "space_nontrivial_accuracy": 0.3333333333333333,
+        "space_false_alarm": 0.0,
+        "rules_recovered": 0.3333333333333333,
+        "exact_recall": 0.3333333333333333,
+        "n_spurious": 0,
+        "unseen_accuracy": 0.75,
+        "n_unseen": 128
+      }
+    },
+    {
+      "seed": 17,
+      "changed_indices": [
+        0
+      ],
+      "phase_a_observations": 50,
+      "phase_b_observations": 50,
+      "stateless": {
+        "space_accuracy": 0.9583333333333334,
+        "space_nontrivial_accuracy": 0.75,
+        "space_false_alarm": 0.0,
+        "rules_recovered": 0.6666666666666666,
+        "exact_recall": 0.6666666666666666,
+        "n_spurious": 0,
+        "unseen_accuracy": 0.984375,
+        "n_unseen": 128
+      },
+      "persistent": {
+        "space_accuracy": 0.875,
+        "space_nontrivial_accuracy": 0.25,
+        "space_false_alarm": 0.0,
+        "rules_recovered": 0.3333333333333333,
+        "exact_recall": 0.3333333333333333,
+        "n_spurious": 0,
+        "unseen_accuracy": 0.921875,
+        "n_unseen": 128
+      }
+    },
+    {
+      "seed": 18,
+      "changed_indices": [
+        2
+      ],
+      "phase_a_observations": 50,
+      "phase_b_observations": 50,
+      "stateless": {
+        "space_accuracy": 0.7916666666666666,
+        "space_nontrivial_accuracy": 0.20512820512820512,
+        "space_false_alarm": 0.07909604519774012,
+        "rules_recovered": 0.6666666666666666,
+        "exact_recall": 0.0,
+        "n_spurious": 2,
+        "unseen_accuracy": 0.875,
+        "n_unseen": 128
+      },
+      "persistent": {
+        "space_accuracy": 0.8101851851851852,
+        "space_nontrivial_accuracy": 0.05128205128205128,
+        "space_false_alarm": 0.022598870056497175,
+        "rules_recovered": 0.3333333333333333,
+        "exact_recall": 0.0,
+        "n_spurious": 1,
+        "unseen_accuracy": 0.75,
+        "n_unseen": 128
+      }
+    },
+    {
+      "seed": 19,
+      "changed_indices": [
+        0
+      ],
+      "phase_a_observations": 50,
+      "phase_b_observations": 50,
+      "stateless": {
+        "space_accuracy": 0.9212962962962963,
+        "space_nontrivial_accuracy": 0.8787878787878788,
+        "space_false_alarm": 0.07103825136612021,
+        "rules_recovered": 1.0,
+        "exact_recall": 0.3333333333333333,
+        "n_spurious": 2,
+        "unseen_accuracy": 0.921875,
+        "n_unseen": 128
+      },
+      "persistent": {
+        "space_accuracy": 0.9305555555555556,
+        "space_nontrivial_accuracy": 0.8181818181818182,
+        "space_false_alarm": 0.04918032786885246,
+        "rules_recovered": 0.6666666666666666,
+        "exact_recall": 0.3333333333333333,
+        "n_spurious": 1,
+        "unseen_accuracy": 0.890625,
+        "n_unseen": 128
+      }
+    },
+    {
+      "seed": 20,
+      "changed_indices": [
+        0
+      ],
+      "phase_a_observations": 50,
+      "phase_b_observations": 50,
+      "stateless": {
+        "space_accuracy": 1.0,
+        "space_nontrivial_accuracy": 1.0,
+        "space_false_alarm": 0.0,
+        "rules_recovered": 1.0,
+        "exact_recall": 1.0,
+        "n_spurious": 0,
+        "unseen_accuracy": 1.0,
+        "n_unseen": 128
+      },
+      "persistent": {
+        "space_accuracy": 0.9166666666666666,
+        "space_nontrivial_accuracy": 0.6666666666666666,
+        "space_false_alarm": 0.0,
+        "rules_recovered": 0.6666666666666666,
+        "exact_recall": 0.6666666666666666,
+        "n_spurious": 0,
+        "unseen_accuracy": 0.875,
+        "n_unseen": 128
+      }
+    },
+    {
+      "seed": 21,
+      "changed_indices": [
+        0
+      ],
+      "phase_a_observations": 50,
+      "phase_b_observations": 50,
+      "stateless": {
+        "space_accuracy": 0.9583333333333334,
+        "space_nontrivial_accuracy": 1.0,
+        "space_false_alarm": 0.05,
+        "rules_recovered": 1.0,
+        "exact_recall": 0.6666666666666666,
+        "n_spurious": 1,
+        "unseen_accuracy": 0.984375,
+        "n_unseen": 128
+      },
+      "persistent": {
+        "space_accuracy": 0.9166666666666666,
+        "space_nontrivial_accuracy": 0.75,
+        "space_false_alarm": 0.05,
+        "rules_recovered": 0.6666666666666666,
+        "exact_recall": 0.3333333333333333,
+        "n_spurious": 1,
+        "unseen_accuracy": 0.9375,
+        "n_unseen": 128
+      }
+    },
+    {
+      "seed": 22,
+      "changed_indices": [
+        2
+      ],
+      "phase_a_observations": 50,
+      "phase_b_observations": 50,
+      "stateless": {
+        "space_accuracy": 0.9583333333333334,
+        "space_nontrivial_accuracy": 1.0,
+        "space_false_alarm": 0.05263157894736842,
+        "rules_recovered": 1.0,
+        "exact_recall": 0.6666666666666666,
+        "n_spurious": 1,
+        "unseen_accuracy": 0.90625,
+        "n_unseen": 128
+      },
+      "persistent": {
+        "space_accuracy": 0.875,
+        "space_nontrivial_accuracy": 0.6,
+        "space_false_alarm": 0.05263157894736842,
+        "rules_recovered": 0.6666666666666666,
+        "exact_recall": 0.3333333333333333,
+        "n_spurious": 1,
+        "unseen_accuracy": 0.8125,
+        "n_unseen": 128
+      }
+    },
+    {
+      "seed": 23,
+      "changed_indices": [
+        0
+      ],
+      "phase_a_observations": 50,
+      "phase_b_observations": 50,
+      "stateless": {
+        "space_accuracy": 1.0,
+        "space_nontrivial_accuracy": 1.0,
+        "space_false_alarm": 0.0,
+        "rules_recovered": 1.0,
+        "exact_recall": 1.0,
+        "n_spurious": 0,
+        "unseen_accuracy": 1.0,
+        "n_unseen": 128
+      },
+      "persistent": {
+        "space_accuracy": 0.9166666666666666,
+        "space_nontrivial_accuracy": 0.7142857142857143,
+        "space_false_alarm": 0.0,
+        "rules_recovered": 0.6666666666666666,
+        "exact_recall": 0.6666666666666666,
+        "n_spurious": 0,
+        "unseen_accuracy": 0.9375,
+        "n_unseen": 128
+      }
+    },
+    {
+      "seed": 24,
+      "changed_indices": [
+        2
+      ],
+      "phase_a_observations": 50,
+      "phase_b_observations": 50,
+      "stateless": {
+        "space_accuracy": 0.9583333333333334,
+        "space_nontrivial_accuracy": 0.625,
+        "space_false_alarm": 0.0,
+        "rules_recovered": 0.6666666666666666,
+        "exact_recall": 0.6666666666666666,
+        "n_spurious": 0,
+        "unseen_accuracy": 0.984375,
+        "n_unseen": 128
+      },
+      "persistent": {
+        "space_accuracy": 0.9166666666666666,
+        "space_nontrivial_accuracy": 0.25,
+        "space_false_alarm": 0.0,
+        "rules_recovered": 0.3333333333333333,
+        "exact_recall": 0.3333333333333333,
+        "n_spurious": 0,
+        "unseen_accuracy": 0.953125,
+        "n_unseen": 128
+      }
+    },
+    {
+      "seed": 25,
+      "changed_indices": [
+        1
+      ],
+      "phase_a_observations": 50,
+      "phase_b_observations": 50,
+      "stateless": {
+        "space_accuracy": 0.9583333333333334,
+        "space_nontrivial_accuracy": 1.0,
+        "space_false_alarm": 0.05263157894736842,
+        "rules_recovered": 1.0,
+        "exact_recall": 0.6666666666666666,
+        "n_spurious": 1,
+        "unseen_accuracy": 0.984375,
+        "n_unseen": 128
+      },
+      "persistent": {
+        "space_accuracy": 0.875,
+        "space_nontrivial_accuracy": 0.6,
+        "space_false_alarm": 0.05263157894736842,
+        "rules_recovered": 0.6666666666666666,
+        "exact_recall": 0.3333333333333333,
+        "n_spurious": 1,
+        "unseen_accuracy": 0.953125,
+        "n_unseen": 128
+      }
+    },
+    {
+      "seed": 26,
+      "changed_indices": [
+        2
+      ],
+      "phase_a_observations": 50,
+      "phase_b_observations": 50,
+      "stateless": {
+        "space_accuracy": 0.9583333333333334,
+        "space_nontrivial_accuracy": 1.0,
+        "space_false_alarm": 0.04918032786885246,
+        "rules_recovered": 1.0,
+        "exact_recall": 0.6666666666666666,
+        "n_spurious": 1,
+        "unseen_accuracy": 0.984375,
+        "n_unseen": 128
+      },
+      "persistent": {
+        "space_accuracy": 0.9583333333333334,
+        "space_nontrivial_accuracy": 0.7272727272727273,
+        "space_false_alarm": 0.0,
+        "rules_recovered": 0.6666666666666666,
+        "exact_recall": 0.6666666666666666,
+        "n_spurious": 0,
+        "unseen_accuracy": 0.984375,
+        "n_unseen": 128
+      }
+    },
+    {
+      "seed": 27,
+      "changed_indices": [
+        2
+      ],
+      "phase_a_observations": 50,
+      "phase_b_observations": 50,
+      "stateless": {
+        "space_accuracy": 0.8333333333333334,
+        "space_nontrivial_accuracy": 0.5714285714285714,
+        "space_false_alarm": 0.058823529411764705,
+        "rules_recovered": 0.6666666666666666,
+        "exact_recall": 0.3333333333333333,
+        "n_spurious": 1,
+        "unseen_accuracy": 0.84375,
+        "n_unseen": 128
+      },
+      "persistent": {
+        "space_accuracy": 0.8333333333333334,
+        "space_nontrivial_accuracy": 0.5714285714285714,
+        "space_false_alarm": 0.058823529411764705,
+        "rules_recovered": 0.6666666666666666,
+        "exact_recall": 0.3333333333333333,
+        "n_spurious": 1,
+        "unseen_accuracy": 0.84375,
+        "n_unseen": 128
+      }
+    },
+    {
+      "seed": 28,
+      "changed_indices": [
+        1
+      ],
+      "phase_a_observations": 50,
+      "phase_b_observations": 50,
+      "stateless": {
+        "space_accuracy": 0.8194444444444444,
+        "space_nontrivial_accuracy": 0.55,
+        "space_false_alarm": 0.07692307692307693,
+        "rules_recovered": 0.6666666666666666,
+        "exact_recall": 0.3333333333333333,
+        "n_spurious": 1,
+        "unseen_accuracy": 0.875,
+        "n_unseen": 128
+      },
+      "persistent": {
+        "space_accuracy": 0.6944444444444444,
+        "space_nontrivial_accuracy": 0.1,
+        "space_false_alarm": 0.07692307692307693,
+        "rules_recovered": 0.3333333333333333,
+        "exact_recall": 0.0,
+        "n_spurious": 1,
+        "unseen_accuracy": 0.75,
+        "n_unseen": 128
+      }
+    },
+    {
+      "seed": 29,
+      "changed_indices": [
+        0
+      ],
+      "phase_a_observations": 50,
+      "phase_b_observations": 50,
+      "stateless": {
+        "space_accuracy": 0.875,
+        "space_nontrivial_accuracy": 0.5714285714285714,
+        "space_false_alarm": 0.0,
+        "rules_recovered": 0.6666666666666666,
+        "exact_recall": 0.6666666666666666,
+        "n_spurious": 0,
+        "unseen_accuracy": 0.875,
+        "n_unseen": 128
+      },
+      "persistent": {
+        "space_accuracy": 0.875,
+        "space_nontrivial_accuracy": 0.5714285714285714,
+        "space_false_alarm": 0.0,
+        "rules_recovered": 0.6666666666666666,
+        "exact_recall": 0.6666666666666666,
+        "n_spurious": 0,
+        "unseen_accuracy": 0.875,
+        "n_unseen": 128
+      }
+    }
+  ]
+}
